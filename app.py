@@ -9,6 +9,10 @@ except:
 
 app = Flask(__name__)
 
+app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
+
+mongo = PyMongo(app)
+
 if __name__ == '__main__':
 	app.debug = os.environ.get('DEBUG') == 'TRUE'
 	app.run(host=os.environ.get('IP'),
