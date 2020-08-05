@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<script>
+    {% if edit %}
+    var ingredientCount = {{recipe.ingredients|length}};
+    {% else %}
+    var ingredientCount = 1;
+    {% endif %}
+</script>
+{% if edit %}
+<h2 style="margin-bottom: 1em;">Edit recipe</h2>
+{% else %}
+<h2 style="margin-bottom: 1em;">Add a recipe</h2>
+{% endif %}
+<form method="POST" enctype="multipart/form-data">
+    <div class="row mb-4">
+        <div class="col">
+            <input type="text" name="name" value="{{recipe.name}}" class="form-control" placeholder="Recipe name"
+                required>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col">
+            <textarea class="form-control" name="description" placeholder="Description" rows="3" required>{{recipe.description}}</textarea>
+        </div>
+    </div>
+    <h4>Ingredients</h2>
+        <div id="ingredients">
+            {% if recipe.ingredients %}
+            {% for ingredient in recipe.ingredients %}
+            <div class="row mb-2" id="ingredient-{{loop.index}}">
+                <div class="col">
+                    <input type="text" class="form-control" value="{{ingredient.name}}" name="ingredient-name-{{loop.index}}"
+                        placeholder="Ingredient name" required>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" value="{{ingredient.ammount}}" name="ingredient-ammount-{{loop.index}}"
+                        placeholder="Ammount (example: 420 grams)" required>
+                </div>
+                <div class="col-xs-1 mr-2">
+                    <button type="button" class="btn btn-danger" id="delete-{{loop.index}}"
+                        onclick="deleteIngredient(event)">Delete</button>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="row mb-2" id="ingredient-1">
+                <div class="col">
+                    <input type="text" class="form-control" name="ingredient-name-1" placeholder="Ingredient name"
+                        required>
+                </div>
+                <div class="col">
+                    <input type="text" class="form-control" name="ingredient-ammount-1"
+                        placeholder="Ammount (example: 420 grams)" required>
+                </div>
+                <div class="col-xs-1 mr-2">
+                    <button type="button" class="btn btn-danger" id="delete-1"
+                        onclick="deleteIngredient(event)">Delete</button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <button type="button" class="btn btn-success mb-4" onclick="addRecipeIngredient()">Add an ingredient</button>
+        <div class="row mb-4">
+            <div class="col">
+                <textarea class="form-control" name="instructions" placeholder="Instructions" rows="3" required>{{recipe.instructions}}</textarea>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            {% if edit %}
+            <label for="recipe-image">Change image (ignore if you don't want to change it)</label>
+            <input type="file" class="form-control-file" id="recipe-image" name='image'>
+            {% else %}
+            <label for="recipe-image">Upload image</label>
+            <input type="file" class="form-control-file" id="recipe-image" name='image' required>
+            {% endif %}
+        </div>
+        {% if edit %}
+        <button class="btn btn-primary btn-lg">Edit recipe</button>
+        {% else %}
+        <button class="btn btn-primary btn-lg">Add recipe</button>
+        {% endif %}
+</form>
+{% endblock %}
