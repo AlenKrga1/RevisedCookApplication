@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+    {% for recipe in recipes %}
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <div class="card mb-2">
+            <a href="{{ url_for('recipe_details', recipe_id=recipe._id) }}"><img src="{{ url_for('get_file', filename=recipe.image) }}" class="card-img-top"></a>
+            <div class="card-body">
+                <h5 class="card-title">{{ recipe.name }}</h5>
+                <p class="card-text">{{ recipe.description|truncate(50) }}</p>
+                <a href="{{ url_for('recipe_details', recipe_id=recipe._id) }}" class="btn-link"><button type="button" class="btn btn-outline-dark btn-block">View more</button></a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -13,6 +13,17 @@ app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 
+@app.route('/')
+def index():
+	recipes = mongo.db.recipes.find()
+	return render_template('home.html', recipes = recipes)
+
+
+@app.route("/uploads/<path:filename>")
+def get_file(filename):
+	return mongo.send_file(filename)
+
+
 @app.route("/recipes/<recipe_id>")
 def recipe_details(recipe_id):
 	recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
