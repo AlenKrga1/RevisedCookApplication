@@ -87,6 +87,12 @@ def edit_recipe(recipe_id):
 	return render_template('addeditrecipe.html', recipe = recipe, edit = True)
 
 
+@app.route("/recipes/deleterecipe/<recipe_id>")
+def delete_recipe(recipe_id):
+	mongo.db.recipes.delete_one({'_id': ObjectId(recipe_id)})
+	return redirect(url_for('index'))
+
+
 if __name__ == '__main__':
 	app.debug = os.environ.get('DEBUG') == 'TRUE'
 	app.run(
