@@ -13,6 +13,11 @@ app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 
+@app.route("/recipes/<recipe_id>")
+def recipe_details(recipe_id):
+	recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
+	return render_template('recipedetails.html', recipe = recipe)
+
 
 @app.route('/recipes/addrecipe/', methods=['GET', 'POST'])
 def addrecipe():
@@ -48,8 +53,6 @@ def addrecipe():
 	return render_template('addeditrecipe.html', recipe = recipe, edit = False)
 
 
-	
-
 @app.route("/recipes/editrecipe/<recipe_id>", methods=['GET', 'POST'])
 def edit_recipe(recipe_id):
 	if request.method == 'POST':
@@ -82,6 +85,7 @@ def edit_recipe(recipe_id):
 
 	recipe = mongo.db.recipes.find_one({'_id': ObjectId(recipe_id)})
 	return render_template('addeditrecipe.html', recipe = recipe, edit = True)
+
 
 if __name__ == '__main__':
 	app.debug = os.environ.get('DEBUG') == 'TRUE'
