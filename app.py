@@ -1,7 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
 from bson.objectid import ObjectId
 from flask_pymongo import PyMongo
+from datetime import datetime
+import pymongo
 import os
+
 try:
 	import env
 except:
@@ -15,7 +18,7 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-	recipes = mongo.db.recipes.find()
+	recipes = mongo.db.recipes.find().sort('date', pymongo.DESCENDING)
 	return render_template('home.html', recipes = recipes)
 
 
@@ -48,7 +51,8 @@ def addrecipe():
 			'description': request.values.get('description'),
 			'ingredients': ingredients,
 			'instructions': request.values.get('instructions'),
-			'image': filename
+			'image': filename,
+			'date': datetime.now()
 		})
 
 		return redirect(url_for('index'))
