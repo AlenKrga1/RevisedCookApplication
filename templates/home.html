@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="jumbotron jumbo" style="background-image: url({{ url_for('static', filename='img/home-bg.jpg') }});">
+    <div class="card" style="background-color: rgba(255, 255, 255, 0.7); border-radius: 20px;">
+        <h1 class="text-center">Simple and fast</h1>
+        <p class="text-center">We offer a range of recipes for every cook out there, beginners and professionals looking for a new thing to serve their guests!</p>
+    </div>
+</div>
 <div class="row">
     {% for recipe in recipes %}
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-        <div class="card mb-2">
-            <a href="{{ url_for('recipe_details', recipe_id=recipe._id) }}"><img src="{{ url_for('get_file', filename=recipe.image) }}" style="height: 200px; object-fit: cover;" class="card-img-top"></a>
+        <div class="card mb-2 rounded-card">
+            <a href="{{ url_for('recipe_details', recipe_id=recipe._id) }}"><img src="{{ url_for('get_file', filename=recipe.image) }}" style="height: 20vw; object-fit: cover; width: 100%; border-radius: 15px 15px 0 0;" class=""></a>
             <div class="card-body">
                 <h5 class="card-title">{{ recipe.name }}</h5>
                 <p class="card-text">{{ recipe.description|truncate(50) }}</p>

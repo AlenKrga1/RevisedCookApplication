@@ -1,0 +1,11 @@
+.btn-link {
+    text-decoration: none !important;
+}
+
+.rounded-card {
+    border-radius: 15px;
+}
+
+.jumbo {
+    background-size: 100%;
+}
