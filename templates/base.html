@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
         integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/cd186ba8b2.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("user_SLYusHb38wSBIGPLmdjs1");
+        })();
+    </script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Cook Application</title>
 </head>
@@ -28,6 +34,9 @@
                 <li class="nav-item {% if request.path == url_for('addrecipe') %} active {% endif %}">
                     <a class="nav-link" href="{{ url_for('addrecipe') }}">Add recipe</a>
                 </li>
+                <li class="nav-item {% if request.path == url_for('contact_us') %} active {% endif %}">
+                    <a class="nav-link" href="{{ url_for('contact_us') }}">Contact us</a>
+                </li>
             </ul>
         </div>
     </nav>
@@ -35,7 +44,8 @@
         {% block content %}{% endblock %}
     </div>
 
-    <button class="btn btn-primary" onclick="scrollToTop()" id="scroll-to-top"><i class="fas fa-arrow-up" style="font-size: 1.5em;"></i></button>
+    <button class="btn btn-primary" onclick="scrollToTop()" id="scroll-to-top"><i class="fas fa-arrow-up"
+            style="font-size: 1.5em;"></i></button>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

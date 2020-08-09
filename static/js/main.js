@@ -1,4 +1,24 @@
 
+// send email
+function sendMail(contactForm) {
+
+    emailjs.send("gmail", "alen", {
+        "from_name": contactForm.name.value,
+        "from_email": contactForm.emailaddress.value,
+        "project_request": contactForm.question.value
+    })
+        .then(
+            function (response) {
+                console.log("SUCCESS", response);
+            },
+            function (error) {
+                console.log("FAILED", error);
+            }
+        );
+    return false;
+}
+
+
 // Scroll to top
 scrollBtn = document.getElementById("scroll-to-top");
 
@@ -21,7 +41,7 @@ function scrollToTop() {
 function deleteIngredient(e) {
     var id = event.target.id.split('-')[1];
     console.log(id);
-    
+
     $('#ingredient-' + id).remove();
 }
 

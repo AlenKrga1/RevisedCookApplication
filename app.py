@@ -21,6 +21,10 @@ def index():
 	recipes = mongo.db.recipes.find().sort('date', pymongo.DESCENDING)
 	return render_template('home.html', recipes = recipes)
 
+@app.route('/contact-us/')
+def contact_us():
+	return render_template('contactus.html')
+
 
 @app.route("/uploads/<path:filename>")
 def get_file(filename):
