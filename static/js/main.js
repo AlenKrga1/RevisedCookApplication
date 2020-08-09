@@ -2,14 +2,15 @@
 // send email
 function sendMail(contactForm) {
 
-    emailjs.send("gmail", "alen", {
+    emailjs.send("gmail", "cooktemplate", {
         "from_name": contactForm.name.value,
-        "from_email": contactForm.emailaddress.value,
-        "project_request": contactForm.question.value
+        "from_email": contactForm.email.value,
+        "message": contactForm.message.value
     })
         .then(
             function (response) {
                 console.log("SUCCESS", response);
+                contactForm.reset();
             },
             function (error) {
                 console.log("FAILED", error);

@@ -18,7 +18,9 @@ mongo = PyMongo(app)
 
 @app.route('/')
 def index():
-	recipes = mongo.db.recipes.find().sort('date', pymongo.DESCENDING)
+	search = request.args.get('search')
+	search = search if search != None else ''
+	recipes = mongo.db.recipes.find({'name': {'$regex': search, '$options': 'i'}}).sort('date', pymongo.DESCENDING)
 	return render_template('home.html', recipes = recipes)
 
 @app.route('/contact-us/')
