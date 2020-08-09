@@ -16,6 +16,9 @@
     </div>
 </form>
 <div class="row">
+    {% if not recipes.count() %}
+    <p>No results found for your search.</p>
+    {% endif %}
     {% for recipe in recipes %}
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
         <div class="card mb-2 rounded-card">
