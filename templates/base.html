@@ -6,18 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.1/css/bootstrap.min.css"
         integrity="sha384-VCmXjywReHh4PwowAiWNagnWcLhlEJLA5buUprzK8rxFgeH0kww/aWY76TfkUoSX" crossorigin="anonymous">
+    <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/cd186ba8b2.js" crossorigin="anonymous"></script>
+    <!-- emailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2.3.2/dist/email.min.js"></script>
     <script type="text/javascript">
         (function () {
             emailjs.init("user_SLYusHb38wSBIGPLmdjs1");
         })();
     </script>
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <title>Cook Application</title>
 </head>
 
 <body style="padding-top: 50px;">
+    <!-- Fixed navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="{{ url_for('index') }}" style="flex-grow: 0;">Alen's recipes</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -41,9 +45,11 @@
         </div>
     </nav>
     <div class="page container" style="margin-top: 1em; margin-bottom: 1em;">
+        <!-- Content goes here -->
         {% block content %}{% endblock %}
     </div>
 
+    <!-- Scroll to Top button -->
     <button class="btn btn-primary" onclick="scrollToTop()" id="scroll-to-top"><i class="fas fa-arrow-up"
             style="font-size: 1.5em;"></i></button>
 

@@ -39,6 +39,7 @@ function scrollToTop() {
 }
 
 
+// Delete the ingredient with the id
 function deleteIngredient(e) {
     var id = event.target.id.split('-')[1];
     console.log(id);
@@ -95,6 +96,7 @@ function addRecipeIngredient() {
 
     deleteDiv.append(deleteBtn);
 
+    // Append everything to the main Row div
     ingredientRow.append(ingredientDiv);
     ingredientRow.append(ammountDiv);
     ingredientRow.append(deleteDiv);

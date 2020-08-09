@@ -1,16 +1,19 @@
+/* Removes the underline */
 .btn-link {
     text-decoration: none !important;
 }
-
+/* Increased border for styling the cards */
 .rounded-card {
     border-radius: 15px;
 }
 
+/* Homepage jumbotron */
 .jumbo {
     background-size: 100%;
     border-radius: 15px;
 }
 
+/* Scroll to top button, bottom right position and animation */
 #scroll-to-top {
     display: none;
     position: fixed;

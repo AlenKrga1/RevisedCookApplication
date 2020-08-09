@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<!-- Home page welcoming jumbotron -->
 <div class="jumbotron jumbo" style="background-image: url({{ url_for('static', filename='img/home-bg.jpg') }});">
     <div class="card" style="background-color: rgba(255, 255, 255, 0.7); border-radius: 20px;">
         <h1 class="text-center">Simple and fast</h1>
@@ -8,6 +9,7 @@
             for a new thing to serve their guests!</p>
     </div>
 </div>
+<!-- Search form -->
 <form method="GET" style="margin-bottom: 2em;">
     <div class="row">
         <div class="col col-xs-12 col-md-6 col-lg-4">
@@ -16,6 +18,7 @@
     </div>
 </form>
 <div class="row">
+    <!-- Recipes -->
     {% if not recipes.count() %}
     <p>No results found for your search.</p>
     {% endif %}
