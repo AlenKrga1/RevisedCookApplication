@@ -28,6 +28,10 @@ We want to be able to easily access recipes based on a search parameter.
 - Users editing recipes:
 The same form for adding the recipes is used here, which makes it really easy and fast to edit a recipe.
 
+## Wireframes
+- [Mobile devices](static/img/Mobile.png)
+- [Desktop devices](static/img/Desktop.png)
+
 ##  Existing Features
 
 - There is a 'Scroll to top' function on all pages.
